@@ -1,11 +1,12 @@
-name: Register Slash Commands
+name: Register Discord Slash Commands
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Allows you to run it manually in the Actions tab
 
 jobs:
   register:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -13,10 +14,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '18'
 
-      - name: Install deps
+      - name: Install dependencies
         run: npm install
 
-      - name: Register slash commands
-        run: node register-commands.ts
+      - name: Run slash command registration
+        run: npx tsx register-commands.ts
